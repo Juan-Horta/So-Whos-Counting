@@ -6,7 +6,7 @@ public class Ruleta {
 		System.out.println("Ruleta...");
 	}
 	
-	private int random() {
+	public int random() {
 		return (int)(Math.random() * ((9) + 1));
 	}
 	

@@ -1,5 +1,7 @@
 package controlador;
 
+import javax.swing.JOptionPane;
+
 import interfaz.InterfazApp;
 import interfaz.PanelBotones;
 import interfaz.PanelCPU;
@@ -37,5 +39,59 @@ public class Controlador {
 		this.pnlCPU = pnlCPU;
 		this.pnlRuleta = pnlRuleta;
 		this.pnlUser = pnlUser;
+	}
+	
+	public String getNumeroUser() {
+		return user.generarString();
+	}
+	
+	public String getNumeroCPU() {
+		return cpu.generarString();
+	}
+	
+	public void girar() {
+		int num = ru.random();
+		
+		int ronda = getRonda();
+		
+		if(ronda == 5) {
+			printGanador();
+			nuevo();
+		}
+		
+		pnlRuleta.printNumero(num);
+	}
+	
+	public void nuevo() {
+		user.nuevo();
+		cpu.nuevo();
+		pnlUser.printNumero();
+		pnlCPU.printNumero();
+	}
+	
+	public void jugarUser(int digito, int casilla) {
+		user.elegir(digito, casilla);
+	}
+	
+	public void jugarCPU(int digito, int casilla) {
+		cpu.elegir(digito, casilla);
+		pnlCPU.printNumero();
+	}
+	
+	public int getRonda() {
+		return user.getRonda();
+	}
+
+	public void printGanador() {
+		int numCPU = cpu.generarInt();
+		int numUser = user.generarInt();
+		
+		if(numCPU > numUser){
+			JOptionPane.showMessageDialog(null, "Ganó CPU!!!");
+		} else if(numUser > numCPU) {
+			JOptionPane.showMessageDialog(null, "Ganó el Usuario!!!");
+		} else {
+			JOptionPane.showMessageDialog(null, "Hubo un empate!!!");
+		}
 	}
 }

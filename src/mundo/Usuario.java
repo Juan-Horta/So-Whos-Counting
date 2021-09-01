@@ -9,7 +9,11 @@ public class Usuario {
 		System.out.println("Usuario...");
 	}
 	
-	private void elegir(int digito, int casilla) {
+	public void nuevo() {
+		num = new char[5];
+	}
+	
+	public void elegir(int digito, int casilla) {
 		
 		if(isEmpty(casilla))
 			num[casilla] = (char) (digito + '0');
@@ -23,7 +27,19 @@ public class Usuario {
 			return false;
 	}
 	
-	private String generarString() {
+	public int getRonda() {
+		
+		int ronda = 0;
+		
+		for (char c : num) {
+			if (c != '\0')
+				ronda++;	
+		}
+		
+		return ronda;
+	}
+	
+	public String generarString() {
 
 		String numString = "";
 		for (char c : num) {
@@ -34,7 +50,7 @@ public class Usuario {
 		return numString;
 	}
 	
-	private int generarInt() {
+	public int generarInt() {
 
 		String numString = "";
 		for (char c : num) {

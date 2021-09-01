@@ -23,9 +23,13 @@ public class Computadora {
 	public void setTablaEstrategia(int[][] tablaEstrategia) {
 		this.tablaEstrategia = tablaEstrategia;
 	}
+	
+	public void nuevo() {
+		num = new char[5];
+	}
 
 	//digito y ronda deben empezar en 0
-	private static void elegir(int digito, int ronda) {
+	public void elegir(int digito, int ronda) {
 
 		int casilla = tablaEstrategia[digito][ronda];
 		int casillaLibre = 0;
@@ -40,7 +44,7 @@ public class Computadora {
 		num[--i] = (char) (digito + '0');
 	}
 
-	private static String generarString() {
+	public String generarString() {
 
 		String numString = "";
 		for (char c : num) {
@@ -51,7 +55,7 @@ public class Computadora {
 		return numString;
 	}
 	
-	private static int generarInt() {
+	public int generarInt() {
 		
 		String numString = "";
 		for (char c : num) {
@@ -60,24 +64,6 @@ public class Computadora {
 			numString += c;
 		}
 		return Integer.parseInt(numString);
-	}
-	
-	public static void main(String[] args) {
-		
-		new Computadora();
-		
-		elegir(0,0);
-		System.out.println(generarString());
-		elegir(6,1);
-		System.out.println(generarString());
-		elegir(4,2);
-		System.out.println(generarString());
-		elegir(6,3);
-		System.out.println(generarString());
-		elegir(9,4);
-		System.out.println(generarString());
-		
-		
 	}
 
 }
