@@ -87,9 +87,9 @@ public class Controlador {
 		int numUser = user.generarInt();
 		
 		if(numCPU > numUser){
-			JOptionPane.showMessageDialog(null, "GanÃ³ CPU!!!");
+			JOptionPane.showMessageDialog(null, "Ganó CPU!!!");
 		} else if(numUser > numCPU) {
-			JOptionPane.showMessageDialog(null, "GanÃ³ el Usuario!!!");
+			JOptionPane.showMessageDialog(null, "Ganó el Usuario!!!");
 		} else {
 			JOptionPane.showMessageDialog(null, "Hubo un empate!!!");
 		}

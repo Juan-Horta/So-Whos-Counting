@@ -18,7 +18,7 @@ public class PanelRuleta extends JPanel{
 		this.ctrl = ctrl;
 		System.out.println("PanelRuleta...");
 		ruleta = new JLabel(imgRuleta);
-		numero = new JLabel("NÃºmero: -", SwingConstants.CENTER);
+		numero = new JLabel("Número: -", SwingConstants.CENTER);
 		numero.setFont(new Font("Arial",Font.PLAIN, 32));
 		
 		JPanel mainPanel = new JPanel(new BorderLayout());
@@ -30,6 +30,6 @@ public class PanelRuleta extends JPanel{
 	
 	public void printNumero(int num) {
 		numeroInt = num;
-		numero.setText("NÃºmero: " + num);
+		numero.setText("Número: " + num);
 	}
 }
