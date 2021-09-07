@@ -67,6 +67,7 @@ public class Controlador {
 		cpu.nuevo();
 		pnlUser.printNumero();
 		pnlCPU.printNumero();
+		pnlUser.habilitar();
 	}
 	
 	public void jugarUser(int digito, int casilla) {
