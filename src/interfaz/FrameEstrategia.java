@@ -111,12 +111,52 @@ public class FrameEstrategia extends JFrame implements ActionListener {
 				for (int j = 0; j < 5; j++) {
 					try {
 						int num = Integer.parseInt(lblMundo[i][j].getText());
-						if (num >= 0 && num <= 5) {
-							estrategia[i][j] = num;
-						} else {
+
+						boolean error = false;
+
+						switch (j) {
+						case 0:
+							if (num > 0 && num <= 5) {
+								estrategia[i][j] = num;
+							} else {
+								error = true;
+							}
+							break;
+						case 1:
+							if (num > 0 && num <= 4) {
+								estrategia[i][j] = num;
+							} else {
+								error = true;
+							}
+							break;
+						case 2:
+							if (num > 0 && num <= 3) {
+								estrategia[i][j] = num;
+							} else {
+								error = true;
+							}
+							break;
+						case 3:
+							if (num > 0 && num <= 2) {
+								estrategia[i][j] = num;
+							} else {
+								error = true;
+							}
+							break;
+						case 4:
+							if (num > 0 && num <= 1) {
+								estrategia[i][j] = num;
+							} else {
+								error = true;
+							}
+							break;
+						}
+
+						if (error) {
 							JOptionPane.showMessageDialog(null,
 									"Se ingreso número fuera de rango en la posición: " + i + "," + (j + 1), "Error",
 									JOptionPane.ERROR_MESSAGE);
+
 							return;
 						}
 					} catch (Exception ex) {
