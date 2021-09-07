@@ -1,19 +1,23 @@
 package interfaz;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.*;
 
 import controlador.Controlador;
 
-public class FrameEstrategia extends JFrame {
+public class FrameEstrategia extends JFrame implements ActionListener {
 
 	private Controlador ctrl;
-	private JLabel lblMundo[][];
+	private JTextField lblMundo[][];
 	private JLabel lblGiros[];
 	private JLabel lblNumero[];
+	private JButton btnGuardar;
 
 	public FrameEstrategia(Controlador ctrl) {
 
@@ -24,20 +28,19 @@ public class FrameEstrategia extends JFrame {
 		JPanel westPanel = new JPanel(new BorderLayout());
 		JPanel bottomPanel = new JPanel(new BorderLayout());
 
-		mainPanel.setBorder(new CompoundBorder(new EmptyBorder(0, 0, 0, 0), new TitledBorder("")));
 		mainPanel.setLayout(new GridLayout(10, 5));
 
 		// Instancia atributos de la clase
-		lblMundo = new JLabel[10][5];
+		lblMundo = new JTextField[10][5];
 
 		// Agrega los atributos al panel
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 5; j++) {
-				lblMundo[i][j] = new JLabel("");
+				lblMundo[i][j] = new JTextField("");
 				lblMundo[i][j].setBorder(new CompoundBorder(new EmptyBorder(0, 0, 0, 0), new TitledBorder("")));
 				lblMundo[i][j].setHorizontalAlignment(JLabel.CENTER);
-				lblMundo[i][j].setVerticalAlignment(JLabel.CENTER);
 				lblMundo[i][j].setEnabled(true);
+				lblMundo[i][j].setFont(new Font("Arial", Font.BOLD, 20));
 				mainPanel.add(lblMundo[i][j]);
 			}
 		}
@@ -73,9 +76,18 @@ public class FrameEstrategia extends JFrame {
 			westPanel.add(lblNumero[j]);
 		}
 
+		bottomPanel.setLayout(new GridLayout(3, 6));
+		btnGuardar = new JButton("GUARDAR");
+		bottomPanel.add(new JLabel());
+		bottomPanel.add(btnGuardar);
+
+		btnGuardar.addActionListener(this);
+		btnGuardar.setActionCommand("Guardar");
+
 		add(northPanel, BorderLayout.NORTH);
 		add(westPanel, BorderLayout.WEST);
 		add(mainPanel, BorderLayout.CENTER);
+		add(bottomPanel, BorderLayout.SOUTH);
 
 		setSize(900, 900);
 		setResizable(false);
@@ -83,5 +95,41 @@ public class FrameEstrategia extends JFrame {
 		setVisible(true);
 
 		System.out.println("FrameEstategia...");
+
+	}
+
+	@Override
+
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+
+		int estrategia[][] = new int[10][5];
+
+		String action = e.getActionCommand();
+		if (action.equals("Guardar")) {
+			for (int i = 0; i < 10; i++) {
+				for (int j = 0; j < 5; j++) {
+					try {
+						int num = Integer.parseInt(lblMundo[i][j].getText());
+						if (num >= 0 && num <= 5) {
+							estrategia[i][j] = num;
+						} else {
+							JOptionPane.showMessageDialog(null,
+									"Se ingreso número fuera de rango en la posición: " + i + "," + (j + 1), "Error",
+									JOptionPane.ERROR_MESSAGE);
+							return;
+						}
+					} catch (Exception ex) {
+						JOptionPane.showMessageDialog(null,
+								"Se ingreso un valor no númerico en la posición: " + i + "," + (j + 1), "Error",
+								JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+				}
+			}
+			ctrl.crearEstrategia(estrategia);
+			JOptionPane.showMessageDialog(null, "Estrategia creada", "Atención", JOptionPane.INFORMATION_MESSAGE);
+			setVisible(false);
+		}
 	}
 }

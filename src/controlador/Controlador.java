@@ -94,4 +94,9 @@ public class Controlador {
 			JOptionPane.showMessageDialog(null, "Hubo un empate!!!");
 		}
 	}
+
+	public void crearEstrategia(int[][] estrategia) {
+		// TODO Auto-generated method stub
+		cpu.setTablaEstrategia(estrategia);
+	}
 }
