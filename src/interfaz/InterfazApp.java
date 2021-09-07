@@ -33,7 +33,7 @@ public class InterfazApp extends JFrame{
         mnuAcerca = new JMenu();
         mnuAcerca.setText("About");
         mitAcerca = new JMenuItem();
-        mitAcerca.setText("Authors: Juan Sebasti·n CastaÒo RamÌrez. Juan JosÈ Horta Osorio.");
+        mitAcerca.setText("Authors: Juan Sebasti√°n Casta√±o Ram√≠rez. Juan Jos√© Horta Osorio.");
         mnuAcerca.add(mitAcerca);
         mbrOpciones.add(mnuAcerca);
 		
@@ -64,7 +64,7 @@ public class InterfazApp extends JFrame{
         getContentPane().add(pnlCPU);
 		
 		ctrl.Conectar(pnlBotones, pnlCPU, pnlRuleta, pnlUser);
-		
+		ctrl.girar();
 		
 		
 		setSize(900,900);
