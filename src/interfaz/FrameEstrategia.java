@@ -18,6 +18,7 @@ public class FrameEstrategia extends JFrame implements ActionListener {
 	private JLabel lblGiros[];
 	private JLabel lblNumero[];
 	private JButton btnGuardar;
+	private JButton btnResetear;
 
 	public FrameEstrategia(Controlador ctrl) {
 
@@ -76,13 +77,20 @@ public class FrameEstrategia extends JFrame implements ActionListener {
 			westPanel.add(lblNumero[j]);
 		}
 
-		bottomPanel.setLayout(new GridLayout(3, 6));
+		bottomPanel.setLayout(new GridLayout(5, 6));
 		btnGuardar = new JButton("GUARDAR");
+		btnResetear = new JButton("Estrategia por defecto");
 		bottomPanel.add(new JLabel());
 		bottomPanel.add(btnGuardar);
+		bottomPanel.add(new JLabel());
+		bottomPanel.add(btnResetear);
+		bottomPanel.add(new JLabel());
 
 		btnGuardar.addActionListener(this);
 		btnGuardar.setActionCommand("Guardar");
+
+		btnResetear.addActionListener(this);
+		btnResetear.setActionCommand("Reset");
 
 		add(northPanel, BorderLayout.NORTH);
 		add(westPanel, BorderLayout.WEST);
@@ -170,6 +178,12 @@ public class FrameEstrategia extends JFrame implements ActionListener {
 			ctrl.crearEstrategia(estrategia);
 			JOptionPane.showMessageDialog(null, "Estrategia creada", "Atención", JOptionPane.INFORMATION_MESSAGE);
 			setVisible(false);
+		}else {
+			if (action.equals("Reset")) {
+				ctrl.reset();
+				JOptionPane.showMessageDialog(null, "Estrategia por defecto cargada", "Atención", JOptionPane.INFORMATION_MESSAGE);
+				setVisible(false);
+			}
 		}
 	}
 }

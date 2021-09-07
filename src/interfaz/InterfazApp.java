@@ -33,8 +33,7 @@ public class InterfazApp extends JFrame{
         mnuAcerca = new JMenu();
         mnuAcerca.setText("About");
         mitAcerca = new JMenuItem();
-        mitAcerca.setText("Authors: Juan Sebastián Castaño Ramírez."
-        		+ "\n Juan José Horta Osorio.");
+        mitAcerca.setText("Authors: Juan Sebastián Castaño Ramírez. Juan José Horta Osorio.");
         mnuAcerca.add(mitAcerca);
         mbrOpciones.add(mnuAcerca);
 		

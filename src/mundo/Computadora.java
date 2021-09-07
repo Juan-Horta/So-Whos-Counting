@@ -58,5 +58,11 @@ public class Computadora {
 		}
 		return Integer.parseInt(numString);
 	}
+	
+	public void resetearEstrategia() {
+		tablaEstrategia = new int[][] { { 5, 4, 3, 2, 1 }, { 5, 3, 3, 2, 1 }, { 5, 3, 3, 2, 1 }, { 4, 3, 2, 2, 1 },
+			{ 4, 3, 2, 2, 1 }, { 3, 2, 2, 1, 1 }, { 3, 2, 1, 1, 1 }, { 2, 2, 1, 1, 1 }, { 1, 1, 1, 1, 1 },
+			{ 1, 1, 1, 1, 1 } };
+	}
 
 }

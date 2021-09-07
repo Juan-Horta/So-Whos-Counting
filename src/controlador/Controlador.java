@@ -12,56 +12,56 @@ import mundo.Ruleta;
 import mundo.Usuario;
 
 public class Controlador {
-	
+
 	InterfazApp intefaz;
-	
-	//mundo
+
+	// mundo
 	Computadora cpu;
 	Ruleta ru;
 	Usuario user;
-	
-	//Paneles
+
+	// Paneles
 	PanelBotones pnlBotones;
 	PanelCPU pnlCPU;
 	PanelRuleta pnlRuleta;
 	PanelUser pnlUser;
-	
+
 	public Controlador() {
 		cpu = new Computadora();
 		ru = new Ruleta();
 		user = new Usuario();
-		
+
 		System.out.println("Controlador...");
 	}
-	
+
 	public void Conectar(PanelBotones pnlBotones, PanelCPU pnlCPU, PanelRuleta pnlRuleta, PanelUser pnlUser) {
 		this.pnlBotones = pnlBotones;
 		this.pnlCPU = pnlCPU;
 		this.pnlRuleta = pnlRuleta;
 		this.pnlUser = pnlUser;
 	}
-	
+
 	public String getNumeroUser() {
 		return user.generarString();
 	}
-	
+
 	public String getNumeroCPU() {
 		return cpu.generarString();
 	}
-	
+
 	public void girar() {
 		int num = ru.random();
-		
+
 		int ronda = getRonda();
-		
-		if(ronda == 5) {
+
+		if (ronda == 5) {
 			printGanador();
 			nuevo();
 		}
-		
+
 		pnlRuleta.printNumero(num);
 	}
-	
+
 	public void nuevo() {
 		user.nuevo();
 		cpu.nuevo();
@@ -69,16 +69,16 @@ public class Controlador {
 		pnlCPU.printNumero();
 		pnlUser.habilitar();
 	}
-	
+
 	public void jugarUser(int digito, int casilla) {
 		user.elegir(digito, casilla);
 	}
-	
+
 	public void jugarCPU(int digito, int casilla) {
 		cpu.elegir(digito, casilla);
 		pnlCPU.printNumero();
 	}
-	
+
 	public int getRonda() {
 		return user.getRonda();
 	}
@@ -86,10 +86,10 @@ public class Controlador {
 	public void printGanador() {
 		int numCPU = cpu.generarInt();
 		int numUser = user.generarInt();
-		
-		if(numCPU > numUser){
+
+		if (numCPU > numUser) {
 			JOptionPane.showMessageDialog(null, "Ganó CPU!!!");
-		} else if(numUser > numCPU) {
+		} else if (numUser > numCPU) {
 			JOptionPane.showMessageDialog(null, "Ganó el Usuario!!!");
 		} else {
 			JOptionPane.showMessageDialog(null, "Hubo un empate!!!");
@@ -99,5 +99,11 @@ public class Controlador {
 	public void crearEstrategia(int[][] estrategia) {
 		// TODO Auto-generated method stub
 		cpu.setTablaEstrategia(estrategia);
+	}
+
+	public void reset() {
+		// TODO Auto-generated method stub
+		cpu.resetearEstrategia();
+		
 	}
 }
